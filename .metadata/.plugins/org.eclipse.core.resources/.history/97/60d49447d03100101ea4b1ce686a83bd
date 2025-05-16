@@ -1,9 +1,0 @@
-package clases;
-
-public class Escenario {
-	
-	private String nombre;
-	private String loalizacion;
-	
-	
-}
