@@ -1,0 +1,17 @@
+package clases;
+
+public class Tecnico {
+	
+	private String nombre;
+	private int edad;
+	private String ocupacion;
+	private int aniosExperiencia;
+	
+	public Tecnico(String nombre, int edad, String ocupacion) {
+		this.nombre = nombre;
+		this.edad = edad;
+		this.ocupacion = ocupacion;
+	}
+	
+	
+}

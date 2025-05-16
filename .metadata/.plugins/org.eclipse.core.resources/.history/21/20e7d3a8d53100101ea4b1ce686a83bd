@@ -1,0 +1,17 @@
+package programa;
+
+import clases.GestorEspectaculos;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		
+		GestorEspectaculos gestor = new GestorEspectaculos ();
+		
+		
+		
+		
+		
+	}
+
+}

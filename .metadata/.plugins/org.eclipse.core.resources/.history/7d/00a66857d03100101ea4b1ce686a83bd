@@ -1,0 +1,11 @@
+package clases;
+
+public class Escenario {
+	
+	private String nombre;
+	private String loalizacion;
+	static final int AFORO_MAXIMO;
+	
+	
+	
+}

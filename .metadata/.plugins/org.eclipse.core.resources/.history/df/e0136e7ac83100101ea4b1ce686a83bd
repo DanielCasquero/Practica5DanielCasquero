@@ -1,0 +1,68 @@
+package clases;
+
+public class Actor {
+	
+	protected Representante representante;
+	private String nombre;
+	private int edad;
+	static final double pago;
+	private String nacionalidad;
+	
+	public Actor(String nombre, int edad) {
+		this.nombre = nombre;
+		this.edad = edad;
+	}
+
+	public Representante getRepresentante() {
+		return representante;
+	}
+
+	public void setRepresentante(Representante representante) {
+		this.representante = representante;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
+	public double getPago() {
+		return pago;
+	}
+
+	public void setPago(double pago) {
+		this.pago = pago;
+	}
+
+	@Override
+	public String toString() {
+		return "Actor [representante=" + representante + ", nombre=" + nombre + ", edad=" + edad + ", nacionalidad="
+				+ nacionalidad + "]";
+	}
+	
+	public static double dineroObtenido() { 
+		return null;
+	}
+	
+	
+	
+}

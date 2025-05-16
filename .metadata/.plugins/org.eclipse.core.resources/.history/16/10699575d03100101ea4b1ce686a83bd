@@ -1,0 +1,21 @@
+package clases;
+
+public class Escenario {
+	
+	private String nombre;
+	private String loalizacion;
+	private int aforoMaximo;
+	
+	public Escenario(String nombre, String loalizacion, int aforoMaximo) {
+		this.nombre = nombre;
+		this.loalizacion = loalizacion;
+		this.aforoMaximo = aforoMaximo;
+	}
+	
+	public Escenario(String nombre, String loalizacion, int aforoMaximo) {
+		this.nombre = nombre;
+		this.loalizacion = loalizacion;
+		this.aforoMaximo = aforoMaximo;
+	}
+	
+}

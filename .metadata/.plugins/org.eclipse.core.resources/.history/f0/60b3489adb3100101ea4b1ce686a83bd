@@ -1,0 +1,24 @@
+package programa;
+
+import clases.GestorEspectaculos;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		
+		GestorEspectaculos gestor = new GestorEspectaculos ();
+		
+		System.out.println("Alta de representantes y listamos");
+		gestor.AltaRepresentante("Daniel", "industrias LM", "655580687");
+		gestor.AltaRepresentante("Juan", "LanMar SL", "632654987");
+		System.out.println("-------------------------------------------");
+		gestor.listarRepresentantes("Daniel");
+		gestor.listarRepresentantes("Juan");
+		
+		
+		
+		
+		
+	}
+
+}

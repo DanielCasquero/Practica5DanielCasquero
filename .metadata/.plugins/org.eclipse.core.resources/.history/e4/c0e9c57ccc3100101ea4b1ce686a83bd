@@ -1,0 +1,13 @@
+package clases;
+
+public class Protagonista extends Actor{
+		
+	
+	static final double PAGO_EXTRA = 400;
+	private Representante repredsentante;
+	
+	public Protagonista(String nombre, int edad) {
+		super(nombre, edad);
+		// TODO Auto-generated constructor stub
+	}
+}
