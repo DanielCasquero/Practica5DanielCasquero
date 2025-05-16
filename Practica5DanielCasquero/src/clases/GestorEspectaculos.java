@@ -9,11 +9,13 @@ public class GestorEspectaculos {
 	private ArrayList<Representante> listaRepresentantes;
 	private ArrayList<Actor> listaActores;
 	private ArrayList<Tecnico> listaTecnicos;
+	private ArrayList<Escenario> listaEscenarios;
 
 	public GestorEspectaculos() {
 		this.listaEspectaulos = new ArrayList<Espectaculo>();
 		this.listaRepresentantes = new ArrayList<Representante>();
 		this.listaActores = new ArrayList<Actor>();
+		this.listaEscenarios = new ArrayList<Escenario>();
 
 	}
 
@@ -88,12 +90,16 @@ public class GestorEspectaculos {
 	 * @param nombreRepresentante Nombre del representante que se busca
 	 */
 	public void eliminarRepresentante(String nombreRepresentante) {
-		Iterator<Representante> it = listaRepresentantes.iterator();
-		while (it.hasNext()) {
-			Representante r = it.next();
-			if (r.getNombre().equalsIgnoreCase(nombreRepresentante)) {
-				it.remove();
+		if (existeRepresentante(nombreRepresentante)) {
+			Iterator<Representante> it = listaRepresentantes.iterator();
+			while (it.hasNext()) {
+				Representante r = it.next();
+				if (r.getNombre().equalsIgnoreCase(nombreRepresentante)) {
+					it.remove();
+				}
 			}
+		} else {
+			System.out.println("No existe un representante con ese nombre");
 		}
 	}
 
@@ -144,7 +150,7 @@ public class GestorEspectaculos {
 	 */
 	public boolean existeActor(String nombreActor) {
 		for (Actor a : listaActores) {
-			if (a.getNacionalidad().equalsIgnoreCase(nombreActor)) {
+			if (a.getNombre().equalsIgnoreCase(nombreActor)) {
 				return true;
 			}
 		}
@@ -161,7 +167,7 @@ public class GestorEspectaculos {
 	public Actor devuelveActor(String nombreActor) {
 		if (existeActor(nombreActor)) {
 			for (Actor a : listaActores) {
-				if (a.getNacionalidad().equalsIgnoreCase(nombreActor)) {
+				if (a.getNombre().equalsIgnoreCase(nombreActor)) {
 					return a;
 				}
 			}
@@ -178,12 +184,16 @@ public class GestorEspectaculos {
 	 * @param nombreActor El nombre del Actor a eliminar
 	 */
 	public void eliminarActor(String nombreActor) {
-		Iterator<Actor> it = listaActores.iterator();
-		while (it.hasNext()) {
-			Actor a = it.next();
-			if (a.getNombre().equalsIgnoreCase(nombreActor)) {
-				it.remove();
+		if (existeActor(nombreActor)) {
+			Iterator<Actor> it = listaActores.iterator();
+			while (it.hasNext()) {
+				Actor a = it.next();
+				if (a.getNombre().equalsIgnoreCase(nombreActor)) {
+					it.remove();
+				}
 			}
+		} else {
+			System.out.println("No existe un escenario con ese nombre");
 		}
 	}
 
@@ -261,12 +271,16 @@ public class GestorEspectaculos {
 	 *                           ArrayList de Actores
 	 */
 	public void eliminarProtagonista(String nombreProtagonsita) {
-		Iterator<Actor> it = listaActores.iterator();
-		while (it.hasNext()) {
-			Actor a = it.next();
-			if (a.getNombre().equalsIgnoreCase(nombreProtagonsita) && a.esProtagonista()) {
-				it.remove();
+		if (existeProtagonista(nombreProtagonsita)) {
+			Iterator<Actor> it = listaActores.iterator();
+			while (it.hasNext()) {
+				Actor a = it.next();
+				if (a.getNombre().equalsIgnoreCase(nombreProtagonsita) && a.esProtagonista()) {
+					it.remove();
+				}
 			}
+		} else {
+			System.out.println("No existe un Protagonista con ese nombre");
 		}
 	}
 
@@ -286,6 +300,7 @@ public class GestorEspectaculos {
 	public void altaTecnico(String nombre, String ocupacion) {
 		listaTecnicos.add(new Tecnico(nombre, ocupacion));
 	}
+
 	/**
 	 * Metodo que lista los tecnicos dados de alta en el programa
 	 */
@@ -294,10 +309,13 @@ public class GestorEspectaculos {
 			System.out.println(t);
 		}
 	}
+
 	/**
-	 * Metodo que
-	 * @param nombreTecnico
-	 * @return
+	 * Metodo que comprueva si existe un Tecnico en especifico dentro de un
+	 * ArrayList de tecnicos
+	 * 
+	 * @param nombreTecnico nombre del Tecnico a buscar
+	 * @return si lo encuentra true, sino false
 	 */
 	public boolean existeTecnico(String nombreTecnico) {
 		for (Tecnico t : listaTecnicos) {
@@ -308,7 +326,239 @@ public class GestorEspectaculos {
 		return false;
 	}
 
+	/**
+	 * Metodo que devuelve un Tecnico sacado del ArrayList de Tecnicos
+	 * 
+	 * @param nombreTecnico Nombre del Tecnico que buscamos
+	 * @returnSi encuentra al Tecnico devuelve un objeto Tecnico, sino devuelve null
+	 */
+	public Tecnico devuelveTecnico(String nombreTecnico) {
+		if (existeTecnico(nombreTecnico)) {
+			for (Tecnico t : listaTecnicos) {
+				if (t.getNombre().equalsIgnoreCase(nombreTecnico)) {
+					return t;
+				}
+			}
+		} else {
+			System.out.println("No sea ha encontrado el Tecnico introducido");
+		}
+		return null;
+	}
+
+	/**
+	 * Metodo que elimina un Tecnico de un ArrayList de tecnicos mediante el uso de
+	 * la clase Iterator
+	 * 
+	 * @param nombreTecnico Nombre del Tecnico que quiero eliminar
+	 */
+	public void eliminarTecnico(String nombreTecnico) {
+		if (existeTecnico(nombreTecnico)) {
+			Iterator<Tecnico> it = listaTecnicos.iterator();
+			while (it.hasNext()) {
+				Tecnico t = it.next();
+				if (t.getNombre().equalsIgnoreCase(nombreTecnico)) {
+					it.remove();
+				}
+			}
+		} else {
+			System.out.println("No existe un Tecnico con ese nombre");
+		}
+	}
+
+	//
+	//
+	//
+	// Metodos relativos a TecnicoEspecializado
+	//
+	//
+	//
+
+	/**
+	 * Metodo que crea un objeto Tecnico y lo introduce en un ArrayList de tecnicos
+	 * 
+	 * @param nombre       nombre del tecnico a introducir
+	 * @param ocupacion    ocupacion del tecnico a introducir
+	 * @param especialidad especialidad del tecnico a introducir
+	 */
+	public void altaTecnicoEspecializado(String nombre, String ocupacion, String especialidad) {
+		listaTecnicos.add(new TecnicoEspecializado(nombre, ocupacion, especialidad));
+	}
+
+	/**
+	 * Metodo que comprueba si un tecnico dentro del ArrayList de tecnicos estás
+	 * especializado mediante un metodo estaEspecializado, muestra por pantalla tan
+	 * solo los TecnicosEspecializados
+	 */
+	public void listarTecnicosEspecializados() {
+		for (Tecnico t : listaTecnicos) {
+			if (t.estaEspecializado()) {
+				System.out.println(t);
+			}
+		}
+	}
+
+	/**
+	 * Metodo que nos dice si existe un tecnico especializado dentro del ArrayList
+	 * de tecnicos
+	 * 
+	 * @param nombreTecnicoEspecializado nombre del Tecnico a buscar
+	 * @return si lo encuantra devuelve true, sino false
+	 */
+	public boolean existeTecnicoEspcializado(String nombreTecnicoEspecializado) {
+		for (Tecnico t : listaTecnicos) {
+			if (t.estaEspecializado() && t.getNombre().equalsIgnoreCase(nombreTecnicoEspecializado)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Metodo que Busca un TecnicoEspecializado mediante otro metodo
+	 * existeTecnicoEspecializado que nos devuelve un booleano con true o false
+	 * 
+	 * @param nombreTecnicoEspecializado nombre del Tecnico a buscar
+	 * @return si lo encuentra devuelve un TecnicoEspecializado parseado, sino
+	 *         devuelve null
+	 */
+	public TecnicoEspecializado devuelveTecnicoEspecializado(String nombreTecnicoEspecializado) {
+		if (existeTecnicoEspcializado(nombreTecnicoEspecializado)) {
+			for (Tecnico t : listaTecnicos) {
+				if (t.estaEspecializado() && t.getNombre().equalsIgnoreCase(nombreTecnicoEspecializado)) {
+					return (TecnicoEspecializado) t;
+				}
+			}
+		} else {
+			System.out.println("No se ha encontrado un TecnicoEspecializado");
+		}
+		return null;
+	}
+
+	/**
+	 * Metodo que emplea la clase Iterator para eliminar un TecnicoEspecializado del
+	 * ArrayList de tecnicos
+	 * 
+	 * @param nombreTecnicoEspecializado nombre del Tecnico a eliminar
+	 */
+	public void eliminarTecnicoEspecializado(String nombreTecnicoEspecializado) {
+		if (existeTecnicoEspcializado(nombreTecnicoEspecializado)) {
+			Iterator<Tecnico> it = listaTecnicos.iterator();
+			while (it.hasNext()) {
+				Tecnico t = it.next();
+				if (t.getNombre().equalsIgnoreCase(nombreTecnicoEspecializado) && t.estaEspecializado()) {
+					it.remove();
+				}
+			}
+		} else {
+			System.out.println("No existe un Tecnico especializado con ese nombre");
+		}
+	}
+
+	//
+	//
+	//
+	// Metodos relativos a Escenario
+	//
+	//
+	//
+	/**
+	 * Metodo que de de alta un Escenario en el ArryList de escenarios
+	 * 
+	 * @param nombre      nombre del Escenario a introducir
+	 * @param loalizacion loalizacion del Escenario a introducir
+	 * @param aforoMaximo aforoMaximo del Escenario a introducir
+	 */
+	public void altaEscenario(String nombre, String loalizacion, int aforoMaximo) {
+		listaEscenarios.add(new Escenario(nombre, loalizacion, aforoMaximo));
+	}
+
+	/**
+	 * Metodo que muestra por pantalla todos los escenarios dados de alta en el
+	 * ArrayList de escenarios
+	 */
+	public void listarEscenarios() {
+		for (Escenario e : listaEscenarios) {
+			System.out.println(e);
+		}
+	}
+
+	/**
+	 * Metodo que busca un Escenario en específico dentro del ArrayList de
+	 * escenarios para comprobar si existe o no
+	 * 
+	 * @param nombreEscenario nombre del escenario a introducir
+	 * @return si lo encuentra devuelve true, sino false
+	 */
+	public boolean existeEscenario(String nombreEscenario) {
+		for (Escenario e : listaEscenarios) {
+			if (e.getNombre().equalsIgnoreCase(nombreEscenario)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Metodo que busca a un Escenario en especifico dentro del ArrayList de
+	 * Escenario y lo devuelve entero
+	 * 
+	 * @param nombreEscenario nombre del Escenario a devolver
+	 * @return si lo encuentra devuelve el objeto Escenario, sino null
+	 */
+	public Escenario devuelveEscenario(String nombreEscenario) {
+		if (existeEscenario(nombreEscenario)) {
+			for (Escenario e : listaEscenarios) {
+				if (e.getNombre().equalsIgnoreCase(nombreEscenario)) {
+					return e;
+				}
+			}
+		} else {
+			System.out.println("No se ha encontrado un Escenario");
+		}
+		return null;
+	}
+
+	/**
+	 * Metodo que elimina un Escenario de un ArrayList de escenarios mediante la
+	 * clase Iterator
+	 * 
+	 * @param nombreEscenario nombre del escenario a eliminar
+	 */
+	public void eliminarEscenario(String nombreEscenario) {
+		if (existeEscenario(nombreEscenario)) {
+			Iterator<Escenario> it = listaEscenarios.iterator();
+			while (it.hasNext()) {
+				Escenario e = it.next();
+				if (e.getNombre().equalsIgnoreCase(nombreEscenario)) {
+					it.remove();
+				}
+			}
+		} else {
+			System.out.println("No existe un escenario con ese nombre");
+		}
+	}
+	//
+	//
+	//
+	// Metodos relativos a Escenario
+	//
+	//
+	//
+	
+	public void altaEspectaculo() {
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

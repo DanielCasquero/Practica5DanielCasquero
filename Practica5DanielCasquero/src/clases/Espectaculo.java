@@ -9,12 +9,11 @@ public class Espectaculo {
 	protected ArrayList<Actor> listaActores;
 	protected ArrayList<Tecnico> listaTecnicos; 
 
-	public Espectaculo(String tipoEspectaculo, Escenario escenario, ArrayList<Actor> listaActores,
-			ArrayList<Tecnico> listaTecnicos) {
+	public Espectaculo(String tipoEspectaculo, Escenario escenario) {
 		this.tipoEspectaculo = tipoEspectaculo;
 		this.escenario = escenario;
-		this.listaActores = listaActores;
-		this.listaTecnicos = listaTecnicos;
+		this.listaActores = new ArrayList<Actor>();
+		this.listaTecnicos = new ArrayList<Tecnico>();
 	}
 
 	public String getTipoEspectaculo() {
