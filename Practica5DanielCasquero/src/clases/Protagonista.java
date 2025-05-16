@@ -51,5 +51,11 @@ public class Protagonista extends Actor {
 	public static double dineroObtenido() {
 		return PAGO + PAGO_EXTRA;
 	}
+	/**
+	 * Metodo que permite al protagonista actuar haciendo cosas específicas de protagonista
+	 */
+	public void actuar() {
+		System.out.println(super.getNombre() + " está actuando, siendo el centro de atención");
+	}
 
 }

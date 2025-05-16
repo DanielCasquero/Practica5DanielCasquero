@@ -10,8 +10,9 @@ public class Programa {
 		Scanner input = new Scanner (System.in);
 		
 		
-		
 		GestorEspectaculos gestor = new GestorEspectaculos ();
+		
+		
 		
 		System.out.println("-----Alta de representantes y listamos-----");
 		gestor.AltaRepresentante("Daniel", "industrias LM", "655580687");

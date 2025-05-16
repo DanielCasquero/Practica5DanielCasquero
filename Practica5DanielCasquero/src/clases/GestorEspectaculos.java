@@ -5,14 +5,14 @@ import java.util.Iterator;
 
 public class GestorEspectaculos {
 
-	private ArrayList<Espectaculo> listaEspectaulos;
+	private ArrayList<Espectaculo> listaEspectaculos;
 	private ArrayList<Representante> listaRepresentantes;
 	private ArrayList<Actor> listaActores;
 	private ArrayList<Tecnico> listaTecnicos;
 	private ArrayList<Escenario> listaEscenarios;
 
 	public GestorEspectaculos() {
-		this.listaEspectaulos = new ArrayList<Espectaculo>();
+		this.listaEspectaculos = new ArrayList<Espectaculo>();
 		this.listaRepresentantes = new ArrayList<Representante>();
 		this.listaActores = new ArrayList<Actor>();
 		this.listaEscenarios = new ArrayList<Escenario>();
@@ -537,22 +537,186 @@ public class GestorEspectaculos {
 			System.out.println("No existe un escenario con ese nombre");
 		}
 	}
-	//
-	//
-	//
-	// Metodos relativos a Escenario
-	//
-	//
-	//
-	
-	public void altaEspectaculo() {
-		
+	/**
+	 * Metodo que introduce un esoectaculo en un escenario, comprobando antes si ambos existen y utilizando 
+	 * metodos que devuelven tanto Escenarios como Espectaculos
+	 * @param nombreEspectaculo nombre del Espectaculo a introducir
+	 * @param nombreEscenario nombre del Escenario donde introducir el Espectaculo
+	 */
+	public void introducirEspectaculoEscenario(String nombreEspectaculo, String nombreEscenario) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			if (existeEscenario(nombreEscenario)) {
+				devuelveEscenario(nombreEscenario).setEspectaculo(devuelveEspectaculo(nombreEspectaculo));
+			} else {
+				System.out.println("No escenario no exise");
+			}
+		} else {
+			System.out.println("El espectaculo no existe");
+		}
 	}
+	//
+	//
+	//
+	// Metodos relativos a Espectaculo
+	//
+	//
+	//
+	/**
+	 * Metodo que da de alta un espectaculo en un ArrayList de espectaculo
+	 * @param tipoEspectaculo no muestra el tipo de epectaculo que va a ser (comedia, drama, romance...)
+	 */
+	public void altaEspectaculo(String nombre, String tipoEspectaculo) {
+		listaEspectaculos.add(new Espectaculo(nombre, tipoEspectaculo));
+	}
+	/**
+	 * Metodo que muestra por pantalla los espectaculos que se encuentren dentro del ArrayList de espectaculos
+	 */
+	public void listarEspectaculos() {
+		for (Espectaculo e : listaEspectaculos) {
+			System.out.println(e);
+		}
+	}
+	/**
+	 * Metodo que nos dice si existe o no un espectaculo en funcion de un nombre introducido
+	 * @param nombreEspectaculo nombre del espectaculo que queremos saber si existe
+	 * @return si existe devuelve true, sino false
+	 */
+	public boolean existeEspectaculo(String nombreEspectaculo) {
+		for (Espectaculo e : listaEspectaculos) {
+			if (e.getNombre().equalsIgnoreCase(nombreEspectaculo)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	/**
+	 * Metodo que devuelve un Espectaculo si existe y se encuentra al buscarse dentro del ArryListe de espectaculos
+	 * @param nombreEspectaculo nombre del espectaculo a devolver
+	 * @return si encuentra el Espectaculo lo devuelve, sino devuelve null
+	 */
+	public Espectaculo devuelveEspectaculo(String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			for (Espectaculo e : listaEspectaculos) {
+				if (e.getNombre().equalsIgnoreCase(nombreEspectaculo)) {
+					return e;
+				}
+			}
+		} else {
+			System.out.println("No se ha encontrado un Espectaculo");
+		}
+		return null;
+	}
+	/**
+	 * Metodo que elimina un espectaculo del ArrayList de espectaculos, si es que existe, empleando la clase Iterator
+	 * @param nombreEspectaculo nombre del espectaculo a eliminar
+	 */
+	public void eliminarEspectaculo(String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			Iterator<Espectaculo> it = listaEspectaculos.iterator();
+			while (it.hasNext()) {
+				Espectaculo e = it.next();
+				if (e.getNombre().equalsIgnoreCase(nombreEspectaculo)) {
+					it.remove();
+				}
+			}
+		} else {
+			System.out.println("No existe un escenario con ese nombre");
+		}
+	}
+	/**
+	 * Metodo que introduce los tecnicos dados de alta en la clase GestorEspectaculos
+	 * dentro de la clase Espectaculo
+	 * @param nombreEspectaculo nombre del espectaculo donde se van a introducir los Tecnicos
+	 */
+	public void asignarEquipoTecnicoEspectaculo (String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			for (Tecnico t : listaTecnicos) {
+				devuelveEspectaculo(nombreEspectaculo).getListaTecnicos().add(t);
+			}
+		} else {
+			System.out.println("No se ha encontrado un espectaculo");
+		}
+	}
+	/**
+	 * Metodo que muestra por pantalla la lista de los Tecnicos que trabajarán en el espectaculo
+	 * @param nombreEspectaculo nombre del Espectaculo del cual queremos mostrar los 
+	 */
+	public void mostrarEquipoTecnicoEspectaculo(String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			for (Tecnico t : devuelveEspectaculo(nombreEspectaculo).getListaTecnicos()) {
+				System.out.println(t);
+			}
+		} else {
+			System.out.println("No se ha encontrado un espectaculo");
+		}
+	}
+	/**
+	 * Metodo que introduce los Actores dados de alta en la clase GestorEspectaculos
+	 * dentro de la clase Espectaculo
+	 * @param nombreEspectaculo nombre del Espectaculo del cual se quiere acceder a su ArrayList de actores
+	 */
+	public void asignarActoresEspectaculo (String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			for (Actor a : listaActores) {
+				devuelveEspectaculo(nombreEspectaculo).getListaActores().add(a);
+			}
+		} else {
+			System.out.println("No se ha encontrado un espectaculo");
+		}
+	}
+	/**
+	 * Metodo que muestra por pantalla el Rparto de actores de un Espectaculo
+	 * @param nombreEspectaculo nombre del Espectaculo del cual se quiere imprimir su reparto de actores
+	 */
+	public void mostrarRepartoActoresEspectaculo(String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			for (Actor a : devuelveEspectaculo(nombreEspectaculo).getListaActores()) {
+				System.out.println(a);
+			}
+		} else {
+			System.out.println("No se ha encontrado un espectaculo");
+		}
+	}
+	/**
+	 * Metodo que permite a los actores y a los tecnicos prepararse para el espectaculo
+	 * @param nombreEspectaculo nombre del espectaculo que se va a llevar a cabo
+	 */
+	public void prepararEspectaculo(String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			System.out.println("El espectaculo se está preparando");
+			System.out.println();
+			for (Tecnico t : devuelveEspectaculo(nombreEspectaculo).getListaTecnicos()) {
+				t.prepararEquipo();
+			}
+			System.out.println();
+			for (Actor a : devuelveEspectaculo(nombreEspectaculo).getListaActores()) {
+				a.ensayar();
+			}
+		} else {
+			System.out.println("No se ha encontrado ningun espectaculo");
+		}
+	}
+	/**
+	 * Metodo que da comienzo al espectaculo, el cual recorre los ArrayList de la clase Espectaculo y muestra acciones que realizan los actores o los Tecnicos 
+	 * @param nombreEspectaculo nombre del espectaculo que se va a llevar a cabo
+	 */
+	public void comenzarEspectaculo(String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			System.out.println("El espectaculo comienza");
+			System.out.println();
+			for (Tecnico t : devuelveEspectaculo(nombreEspectaculo).getListaTecnicos()) {
+				t.mantenerEspectaculo();
+			}
+			System.out.println();
+			for (Actor a : devuelveEspectaculo(nombreEspectaculo).getListaActores()) {
+				a.actuar();
+			}
+		} else {
+			System.out.println("No se ha encontrado ningun espectaculo");
+		}
+	}
+	
 }
-
-
-
-
 
 
 

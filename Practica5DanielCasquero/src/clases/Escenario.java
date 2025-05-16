@@ -5,6 +5,7 @@ public class Escenario {
 	private String nombre;
 	private String loalizacion;
 	private int aforoMaximo;
+	private Espectaculo espectaculo;
 
 	public Escenario(String nombre, String loalizacion, int aforoMaximo) {
 		this.nombre = nombre;
@@ -36,9 +37,20 @@ public class Escenario {
 		this.aforoMaximo = aforoMaximo;
 	}
 
+	public Espectaculo getEspectaculo() {
+		return espectaculo;
+	}
+
+	public void setEspectaculo(Espectaculo espectaculo) {
+		this.espectaculo = espectaculo;
+	}
+
 	@Override
 	public String toString() {
-		return "Escenario [nombre=" + nombre + ", loalizacion=" + loalizacion + ", aforoMaximo=" + aforoMaximo + "]";
+		return "Escenario [nombre=" + nombre + ", loalizacion=" + loalizacion + ", aforoMaximo=" + aforoMaximo
+				+ ", espectaculo=" + espectaculo + "]";
 	}
+
+
 
 }

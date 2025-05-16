@@ -47,5 +47,16 @@ public class TecnicoEspecializado extends Tecnico {
 		return "TecnicoEspecializado [especialidad=" + especialidad + ", certificacion=" + certificacion
 				+ ", anyosExperiencia=" + anyosExperiencia + ", toString()=" + super.toString() + "]";
 	}
-
+	/**
+	 * Metodo que permite al tecnico preparar su equipo para un Espectaculo
+	 */
+	public void prepararEquipo() {
+	    System.out.println(super.getNombre() + " está preparando su equipo de trabajo para la función con sumo cuidado");
+	}
+	/**
+	 * Metodo que permite al Tecnico realizar tareas en un Espectaculo
+	 */
+	public void mantenerEspectaculo() {
+		System.out.println(super.getNombre() + " está ajustando la iluminación y el sonido a la perfeción");
+	}
 }

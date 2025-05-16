@@ -63,4 +63,10 @@ public class Actor {
 	public void ensayar() {
 		System.out.println(this.nombre +" está ensayando");
 	}
+	/**
+	 * Metodo que permite al Actor actuar
+	 */
+	public void actuar() {
+		System.out.println(this.nombre + " está actuando");
+	}
 }

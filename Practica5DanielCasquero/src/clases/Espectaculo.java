@@ -5,15 +5,23 @@ import java.util.ArrayList;
 public class Espectaculo {
 
 	private String tipoEspectaculo;
-	private Escenario escenario;
+	private String nombre;
 	protected ArrayList<Actor> listaActores;
 	protected ArrayList<Tecnico> listaTecnicos; 
 
-	public Espectaculo(String tipoEspectaculo, Escenario escenario) {
+	public Espectaculo(String nombre, String tipoEspectaculo) {
+		this.nombre = nombre;
 		this.tipoEspectaculo = tipoEspectaculo;
-		this.escenario = escenario;
 		this.listaActores = new ArrayList<Actor>();
 		this.listaTecnicos = new ArrayList<Tecnico>();
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getTipoEspectaculo() {
@@ -24,17 +32,25 @@ public class Espectaculo {
 		this.tipoEspectaculo = tipoEspectaculo;
 	}
 
-	public Escenario getEscenario() {
-		return escenario;
+	public ArrayList<Actor> getListaActores() {
+		return listaActores;
 	}
 
-	public void setEscenario(Escenario escenario) {
-		this.escenario = escenario;
+	public void setListaActores(ArrayList<Actor> listaActores) {
+		this.listaActores = listaActores;
+	}
+
+	public ArrayList<Tecnico> getListaTecnicos() {
+		return listaTecnicos;
+	}
+
+	public void setListaTecnicos(ArrayList<Tecnico> listaTecnicos) {
+		this.listaTecnicos = listaTecnicos;
 	}
 
 	@Override
 	public String toString() {
-		return "Espectaculo [tipoEspectaculo=" + tipoEspectaculo + ", escenario=" + escenario + ", listaActores="
+		return "Espectaculo [tipoEspectaculo=" + tipoEspectaculo + ", listaActores="
 				+ listaActores + ", listaTecnicos=" + listaTecnicos + "]";
 	}
 

@@ -56,8 +56,16 @@ public class Tecnico {
 		return "Tecnico [nombre=" + nombre + ", edad=" + edad + ", ocupacion=" + ocupacion + ", aniosExperiencia="
 				+ aniosExperiencia + "]";
 	}
-	
+	/**
+	 * Metodo que permite al tecnico preparar su equipo para un Espectaculo
+	 */
 	public void prepararEquipo() {
 	    System.out.println(nombre + " está preparando su equipo de trabajo para la función");
+	}
+	/**
+	 * Metodo que permite al Tecnico realizar tareas en un Espectaculo
+	 */
+	public void mantenerEspectaculo() {
+		System.out.println(this.nombre + " está ajustando la iluminación y el sonido");
 	}
 }
