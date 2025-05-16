@@ -1,0 +1,40 @@
+package clases;
+
+import java.util.ArrayList;
+
+public class Espectaculo {
+
+	private String tipoEspectaculo;
+	private Escenario escenario;
+	protected ArrayList<Actor> listaActores;
+	protected ArrayList<Tecnico> listaTecnicos; 
+
+	public Espectaculo(String tipoEspectaculo, Escenario escenario) {
+		this.tipoEspectaculo = tipoEspectaculo;
+		this.listaActores = new ArrayList<Actor>();
+		this.listaTecnicos = new ArrayList<Tecnico>();
+	}
+
+	public String getTipoEspectaculo() {
+		return tipoEspectaculo;
+	}
+
+	public void setTipoEspectaculo(String tipoEspectaculo) {
+		this.tipoEspectaculo = tipoEspectaculo;
+	}
+
+	public Escenario getEscenario() {
+		return escenario;
+	}
+
+	public void setEscenario(Escenario escenario) {
+		this.escenario = escenario;
+	}
+
+	@Override
+	public String toString() {
+		return "Espectaculo [tipoEspectaculo=" + tipoEspectaculo + ", escenario=" + escenario + ", listaActores="
+				+ listaActores + ", listaTecnicos=" + listaTecnicos + "]";
+	}
+
+}

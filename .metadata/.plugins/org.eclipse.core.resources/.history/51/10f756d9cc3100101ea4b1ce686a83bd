@@ -1,0 +1,30 @@
+package clases;
+
+public class Protagonista extends Actor{
+		
+	
+	static final double PAGO_EXTRA = 400;
+	private Representante repredsentante;
+	
+	public Protagonista(String nombre, int edad) {
+		super(nombre, edad);
+	}
+
+	public Representante getRepredsentante() {
+		return repredsentante;
+	}
+
+	public void setRepredsentante(Representante repredsentante) {
+		this.repredsentante = repredsentante;
+	}
+
+	public static double getPagoExtra() {
+		return PAGO_EXTRA;
+	}
+
+	@Override
+	public String toString() {
+		return "Protagonista [repredsentante=" + repredsentante + ", toString()=" + super.toString() + "]";
+	}
+	
+}

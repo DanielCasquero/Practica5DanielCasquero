@@ -550,6 +550,13 @@ public class GestorEspectaculos {
 			System.out.println(e);
 		}
 	}
+
+	/**
+	 * Metodo que busca un escenario en un ArrayList de escenarios y lo imprime por
+	 * pantalla en caso de encontrarlo
+	 * 
+	 * @param nombreEscenario
+	 */
 	public void buscarEscenario(String nombreEscenario) {
 		if (existeEscenario(nombreEscenario)) {
 			System.out.println(devuelveEscenario(nombreEscenario));
@@ -658,6 +665,17 @@ public class GestorEspectaculos {
 	public void listarEspectaculos() {
 		for (Espectaculo e : listaEspectaculos) {
 			System.out.println(e);
+		}
+	}
+	/**
+	 * Metodo que busca un escenario en un ArrayList de escenarios mediante metodo devuelveEspectaculo
+	 * @param nombreEspectaculo Nombre del esp
+	 */
+	public void buscarEspectaculo(String nombreEspectaculo) {
+		if (existeEspectaculo(nombreEspectaculo)) {
+			System.out.println(devuelveEspectaculo(nombreEspectaculo));
+		} else {
+			System.out.println("No se ha encontrado un Espectaculo");
 		}
 	}
 
@@ -828,3 +846,16 @@ public class GestorEspectaculos {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+package clases;
+
+public class Protagonista {
+	
+	static final double PAGO_EXTRA = 400;
+	private Representante repredsentante;
+	
+	
+}

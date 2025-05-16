@@ -1,0 +1,15 @@
+package clases;
+
+public class TecnicoEspecializado extends Tecnico{
+	
+	private String especialidad;
+	private String certificacion;
+	
+	public TecnicoEspecializado(String nombre, int edad, String ocupacion) {
+		super(nombre, edad, ocupacion);
+		
+	}
+
+	
+	
+}

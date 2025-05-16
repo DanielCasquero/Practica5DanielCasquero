@@ -11,32 +11,31 @@ public class Programa {
 
 		GestorEspectaculos gestor = new GestorEspectaculos();
 		int eleccion;
-		
-		
-		gestor.AltaRepresentante("Samuel","Montessori", "666888333");
-		gestor.AltaRepresentante("Victor","Industrias LM", "666888333");
-		
+
+		// Introduzco estos datos para que sea mas facil y rapido recorrer y revisar el
+		// programa, los dejo para la presentación también
+
+		gestor.AltaRepresentante("Samuel", "Montessori", "666888333");
+		gestor.AltaRepresentante("Victor", "Industrias LM", "666888333");
+
 		gestor.altaActor("Lucas", 99);
 		gestor.altaActor("Ruben", 21);
-		
+
 		gestor.altaProtagonista("Daniel", 20, "Comedia");
 		gestor.altaProtagonista("Diego", 22, "Drama");
-		
+
 		gestor.altaTecnico("Julio", "Encargado de luces");
 		gestor.altaTecnico("Mario", "Encargado de sonido");
-		
+
 		gestor.altaTecnicoEspecializado("Nicolás", "Encargado de luzes", "Especialista en iluminaciones");
 		gestor.altaTecnicoEspecializado("Karma013", "Encargado de sonido", "Especialista en Ambientación");
-		
+
 		gestor.altaEscenario("Escenario La Roseta", "Zaragoza", 20000);
 		gestor.altaEscenario("Escenario Las Fuentes", "Guatemala", 1500);
-		
-		gestor.altaEspectaculo("Solo en casa", "Comedia");
-		gestor.altaEspectaculo("Romeo y Julieta", "Drama");
-		
-		
-		
-		
+
+		gestor.altaEspectaculo("Hamlet", "Drama");
+		gestor.altaEspectaculo("Romeo y Julieta", "Tragedia");
+
 		System.out.println("Bienvenido al programa de gestión de espectaculos");
 		do {
 			System.out.println("---------------Menú principal---------------");
@@ -100,7 +99,9 @@ public class Programa {
 						gestor.eliminarRepresentante(nombreRepresentante);
 						break;
 					default:
-						System.out.println("Opción no contemplada");
+						if (eleccion != 5) {
+							System.out.println("Opción no contemplada");
+						}
 					}
 				} while (eleccion != 5);
 				eleccion = 0;
@@ -151,7 +152,9 @@ public class Programa {
 						gestor.eliminarActor(nombreActor);
 						break;
 					default:
-						System.out.println("Opción no contemplada");
+						if (eleccion != 5) {
+							System.out.println("Opción no contemplada");
+						}
 					}
 				} while (eleccion != 5);
 				eleccion = 0;
@@ -175,16 +178,18 @@ public class Programa {
 						String nombre = input.nextLine();
 						System.out.print("Introduce una edad para el Protagonista: ");
 						int edad = input.nextInt();
-						System.out.println("Introduce el tipo de obra en el que se especializa el protagonista (Drama, comedia...)");
+						System.out.println(
+								"Introduce el tipo de obra en el que se especializa el protagonista (Drama, comedia...)");
 						input.nextLine();
 						String especialidadObra = input.nextLine();
-						gestor.altaProtagonista(nombre, edad, especialidadObra);
 
+						gestor.altaProtagonista(nombre, edad, especialidadObra);
 						break;
 					case 2:
 						System.out.println();
 						System.out.println("2.-Listar Protagonistas");
 						System.out.println("Listando Protagonistas\n");
+
 						gestor.listarProtagonistas();
 						break;
 					case 3:
@@ -202,7 +207,7 @@ public class Programa {
 						System.out.println("4.-Eliminar Protagonistas");
 						System.out.print("Introduce el nombre del Protagonista que quieres eliminar: ");
 						nombreProtagonista = input.nextLine();
-						
+
 						gestor.eliminarProtagonista(nombreProtagonista);
 						break;
 					case 5:
@@ -214,8 +219,10 @@ public class Programa {
 						String nombreRepresentante = input.nextLine();
 						gestor.insertarRepresentanteEnProtagonista(nombreProtagonista, nombreRepresentante);
 						break;
-						default:
+					default:
+						if (eleccion != 6) {
 							System.out.println("Opcion no contemplada");
+						}
 					}
 				} while (eleccion != 6);
 				eleccion = 0;
@@ -266,7 +273,9 @@ public class Programa {
 						gestor.eliminarTecnico(nombreTecnico);
 						break;
 					default:
-						System.out.println("Opción no contemplada");
+						if (eleccion != 5) {
+							System.out.println("Opción no contemplada");
+						}
 					}
 				} while (eleccion != 5);
 
@@ -320,7 +329,9 @@ public class Programa {
 						gestor.eliminarTecnicoEspecializado(nombreTecnico);
 						break;
 					default:
-						System.out.println("Opción no contemplada");
+						if (eleccion != 5) {
+							System.out.println("Opción no contemplada");
+						}
 					}
 				} while (eleccion != 5);
 				eleccion = 0;
@@ -333,7 +344,8 @@ public class Programa {
 					System.out.println("2.-Listar Escenarios");
 					System.out.println("3.-Buscar Escenarios");
 					System.out.println("4.-Eliminar Escenarios");
-					System.out.println("5.- Salir");
+					System.out.println("5.-Introducir un Espectaculo en un Escenario");
+					System.out.println("6.- Salir");
 					eleccion = input.nextInt();
 					switch (eleccion) {
 					case 1:
@@ -372,22 +384,148 @@ public class Programa {
 						nombreEscenario = input.nextLine();
 						gestor.eliminarEscenario(nombreEscenario);
 						break;
+					case 5:
+						input.nextLine();
+						System.out.println();
+						System.out.println("5.-Introducir un Espectaculo en un Escenario");
+						System.out.println("Introduce el nombre del Escenario al que deseas introducir el Espectaculo");
+						nombreEscenario = input.nextLine();
+						System.out.println("Introduce el nombre del Espectaculo a introducir");
+						String nombreEspectaculo = input.nextLine();
+						gestor.introducirEspectaculoEscenario(nombreEspectaculo, nombreEscenario);
+						break;
 					default:
-						System.out.println("Opción no contemplada");
+						if (eleccion != 6) {
+							System.out.println("Opción no contemplada");
+						}
 					}
-				} while (eleccion != 5);
+				} while (eleccion != 6);
 				eleccion = 0;
 				break;
 			case 7:
+				do {
+					System.out.println();
+					System.out.println("---------------Menú Espectaculos---------------");
+					System.out.println("1.-Alta Espectaculos");
+					System.out.println("2.-Listar Espectaculos");
+					System.out.println("3.-Buscar Espectaculos");
+					System.out.println("4.-Eliminar Espectaculos");
+					System.out.println("5.-Asignar equipo Tecnico a Espectaculo");
+					System.out.println("6.-Mostrar equipo Tecnico de un Espectaculo");
+					System.out.println("7.-Asignar plantilla de Actores a un Espectaculo");
+					System.out.println("8.-Mostrar plantilla de Actores de un Espectaculo");
+					System.out.println("9.-Ensayar espectaculo");
+					System.out.println("10.-Realizar espectaculo");
+					System.out.println("9.- Salir");
+					eleccion = input.nextInt();
+					switch (eleccion) {
+					case 1:
+						input.nextLine();
+						System.out.println("1.-Alta Espectaculos");
+						System.out.print("Introduce un nombre para el Espectaculo: ");
+						String nombreEspectaculo = input.nextLine();
+						System.out.print("Introduce un genero para el Espectaculo (Drama, comedia...): ");
+						String tipoEspectaculo = input.nextLine();
 
+						gestor.altaEspectaculo(nombreEspectaculo, tipoEspectaculo);
+
+						break;
+					case 2:
+
+						System.out.println();
+						System.out.println("2.-Listar Espectaculo");
+						System.out.println("Listando Espectaculos\n");
+						gestor.listarEspectaculos();
+						break;
+					case 3:
+						input.nextLine();
+						System.out.println();
+						System.out.println("3.-Buscar Espectaculos");
+						System.out.print("Introduce el nombre del Espectaculo que quieres ver: ");
+						nombreEspectaculo = input.nextLine();
+
+						gestor.buscarEspectaculo(nombreEspectaculo);
+						break;
+					case 4:
+						input.nextLine();
+						System.out.println();
+						System.out.println("4.-Eliminar Espectaculos");
+						System.out.print("Introduce el nombre del Espectaculo que quieres eliminar: ");
+						nombreEspectaculo = input.nextLine();
+
+						gestor.eliminarEspectaculo(nombreEspectaculo);
+						break;
+					case 5:
+						input.nextLine();
+						System.out.println();
+						System.out.println("5.-Asignar equipo Tecnico a Espectaculo");
+						System.out.println("Introduce el Espectaculo al que quieras introducir el equipo Tecnico previamente dado de alta");
+						nombreEspectaculo = input.nextLine();
+						
+						gestor.asignarEquipoTecnicoEspectaculo(nombreEspectaculo);
+						break;
+					case 6:
+						input.nextLine();
+						System.out.println();
+						System.out.println("6.-Mostrar equipo Tecnico de un Espectaculo");
+						System.out.println("Introduce el nombre del Espectaculo del que quieras revisar el equipo Tecnico");
+						nombreEspectaculo =input.nextLine();
+						
+						gestor.mostrarEquipoTecnicoEspectaculo(nombreEspectaculo);
+						break;
+					case 7:
+						input.nextLine();
+						System.out.println();
+						System.out.println("7.-Asignar plantilla de Actores a un Espectaculo");
+						System.out.println("Introduce el nombre del Espectaculo al que quieras asignar los Actores previamente introducidos");
+						nombreEspectaculo =input.nextLine();
+						
+						gestor.asignarActoresEspectaculo(nombreEspectaculo);
+						break;
+					case 8:
+						input.nextLine();
+						System.out.println();
+						System.out.println("8.-Mostrar plantilla de Actores de un Espectaculo");
+						System.out.println("Introduce el nombre del Espectaculo del que quieras revisar la plantilla de Actores");
+						nombreEspectaculo =input.nextLine();
+						
+						gestor.mostrarRepartoActoresEspectaculo(nombreEspectaculo);
+						break;
+					case 9:
+						input.nextLine();
+						System.out.println();
+						System.out.println("9.-Ensayar espectaculo");
+						System.out.println("Introduce el nombre del Espectaculo que quieras ensayar");
+						nombreEspectaculo = input.nextLine();
+						
+						gestor.prepararEspectaculo(nombreEspectaculo);
+						break;
+					case 10:
+						input.nextLine();
+						System.out.println();
+						System.out.println("10.-Realizar espectaculo");
+						System.out.println("Introduce el nombre del Espectaculo que quieras realizar");
+						nombreEspectaculo = input.nextLine();
+						gestor.realizarEspectaculo(nombreEspectaculo);
+						break;
+					default:
+						if (eleccion != 10) {
+							System.out.println("Opción no contemplada");
+						}
+					}
+				} while (eleccion != 10);
 				eleccion = 0;
 				break;
 			default:
-				System.out.println("Opción no contemplada");
+				if (eleccion != 8) {
+					System.out.println("Opción no contemplada");
+				}
 			}
 
 		} while (eleccion != 8);
-		
+
+		System.out.println("El programa ha finalizado");
+
 		input.close();
 	}
 

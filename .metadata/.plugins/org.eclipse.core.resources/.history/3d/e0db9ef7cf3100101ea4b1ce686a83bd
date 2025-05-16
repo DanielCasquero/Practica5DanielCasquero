@@ -1,0 +1,9 @@
+package clases;
+
+public class Espectaculo {
+	
+	private String tipoEspectaculo;
+	private Escenario escenario;
+	
+	
+}

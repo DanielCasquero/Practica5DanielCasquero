@@ -1,0 +1,11 @@
+package clases;
+
+public class Representante {
+	
+	private String nombre;
+	private String agencia;
+	private String telefono;
+	
+	
+	
+}
